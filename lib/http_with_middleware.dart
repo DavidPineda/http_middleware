@@ -110,13 +110,13 @@ class HttpWithMiddleware {
       {Method method,
       Encoding encoding,
       dynamic body,
-      String url,
+      Uri url,
       Map<String, String> headers}) {
     RequestData data = RequestData(
         method: method,
         encoding: encoding,
         body: body,
-        url: url,
+        url: '${url.origin}${url.path}',
         headers: headers ?? <String, String>{});
     middlewares
         ?.forEach((middleware) => middleware.interceptRequest(data: data));
